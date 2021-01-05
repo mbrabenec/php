@@ -1,14 +1,8 @@
 <?php 
 
-$querey = require 'bootstrap.php';
+require 'vendor/autoload.php';
 
-$tasks = $querey->selectAll('todos');
+$querey = require 'core/bootstrap.php';
 
-
-die(var_dump($tasks));
-
-
-require 'index.view.php';
-
-
-
+require Router::load('routes.php')
+    ->direct(Request::uri(), Request::method());
